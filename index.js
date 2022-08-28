@@ -10,7 +10,19 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send({body: req.body});
+    res.send({body: req.body, msg:"tala"});
+})
+
+app.post('/', (req, res) => {
+    res.send({body: req.body, msg:"tala"});
+})
+
+app.put('/', (req, res) => {
+    res.send({body: req.body, msg:"tala"});
+})
+
+app.patch('/', (req, res) => {
+    res.send({body: req.body, msg:"tala"});
 })
 
 app.get('/test', (req, res) => {
