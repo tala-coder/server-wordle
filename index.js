@@ -1,7 +1,7 @@
 import express from 'express';
 const app = express();
 import http from 'http';
-import { Server } from 'socket.io';
+// import { Server } from 'socket.io';
 import cors from 'cors';
 
 const server = http.createServer(app);
@@ -9,10 +9,7 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.json());
 
-app.use('/abc', movies);
-
-
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
 })
 
@@ -46,6 +43,7 @@ app.get('/', (req,res) => {
 //     })
 // });
 
-server.listen(3001, () => {
-    console.log("SERVER IS RUNNING");
+const PORT = process.env.PORT || '5000';
+server.listen(PORT, () => {
+    console.log("SERVER IS RUNNING", PORT);
 });
