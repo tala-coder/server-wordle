@@ -22,7 +22,7 @@ const io = new Server(server, {
 let rijec = 'react'
 let brojac = 0;
 io.on("connection", (socket) => {
-    socket.once("join_room", (data) => {
+    socket.on("join_room", (data) => {
         console.log('user join in Room', data)
         brojac++;
         brojac > 1 ? io.emit("noviIgrac", { rijec }) : undefined;
@@ -34,7 +34,7 @@ io.on("connection", (socket) => {
         io.emit("receive_message", data);
     });
 
-    socket.once("kraj_igre", () => {
+    socket.on("kraj_igre", () => {
         brojac = 0;
     })
 });
