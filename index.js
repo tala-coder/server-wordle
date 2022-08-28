@@ -7,11 +7,11 @@ import cors from 'cors';
 const server = http.createServer(app);
 
 app.use(cors());
-app.use(express.json());
+// app.use(express.json());
 
-app.get('/test', (req, res) => {
-    res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
-})
+// app.get('/test', (req, res) => {
+//     res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
+// })
 
 const io = new Server(server, {
     cors: {
@@ -19,14 +19,10 @@ const io = new Server(server, {
     },
 });
 
-app.get('/test', (req, res) => {
-    res.send('welcome test')
-})
-
 let rijec = 'react'
 let brojac = 0;
 io.on("connection", (socket) => {
-    socket.on("join_room", (data) => {
+    socket.once("join_room", (data) => {
         console.log('user join in Room', data)
         brojac++;
         brojac > 1 ? io.emit("noviIgrac", { rijec }) : undefined;
@@ -38,7 +34,7 @@ io.on("connection", (socket) => {
         io.emit("receive_message", data);
     });
 
-    socket.on("kraj_igre", () => {
+    socket.once("kraj_igre", () => {
         brojac = 0;
     })
 });
