@@ -13,6 +13,10 @@ const io = new Server(server, {
     },
 });
 
+app.get('/test', (req, res) => {
+    res.send('welcome test')
+})
+
 let rijec = 'react'
 let brojac = 0;
 io.on("connection", (socket) => {
