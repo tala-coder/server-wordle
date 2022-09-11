@@ -14,7 +14,7 @@ const io = new Server(server, {
     cors: {
         origin: "*"
     },
-});
+}); 
 
 // var rijec = setInterval(function () {
 //     rand = rijeci[Math.floor(Math.random() * rijeci.length)];
