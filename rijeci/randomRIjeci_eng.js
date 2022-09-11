@@ -1,0 +1,1 @@
+import wordBank from "./wordle-bank.txt";
